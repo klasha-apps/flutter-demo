@@ -4,19 +4,19 @@ import 'package:givestarreviews/givestarreviews.dart';
 
 import '../constants.dart';
 
-class MobilePaymentScreen extends StatefulWidget{
+class MobilePaymentScreen extends StatefulWidget {
+  final String productImage;
+  final String productName;
 
-  const MobilePaymentScreen({Key? key}) : super(key: key);
-
+  const MobilePaymentScreen(
+      {Key? key, required this.productImage, required this.productName})
+      : super(key: key);
 
   @override
-  MobilePaymentScreenState createState()=> MobilePaymentScreenState();
-
-
+  MobilePaymentScreenState createState() => MobilePaymentScreenState();
 }
 
 class MobilePaymentScreenState extends State<MobilePaymentScreen> {
-
   var _yourGroupValue = 0;
 
   // late CheckoutCurrency _checkoutCurrency;
@@ -81,19 +81,19 @@ class MobilePaymentScreenState extends State<MobilePaymentScreen> {
               color: Colors.grey[100],
               child: Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     flex: 4,
                     child: Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
-                                text:
-                                    'Lorem Ipsum set amit Lorem Ipsum set amit\n',
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-                            TextSpan(
-                              text: 'bold',
+                                text: '${widget.productName}\n',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold)),
+                            const TextSpan(
+                              text: ' ',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -106,7 +106,7 @@ class MobilePaymentScreenState extends State<MobilePaymentScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 40),
                       child: Image.asset(
-                        "assets/images/nike1.png",
+                        widget.productImage,
                         fit: BoxFit.cover,
                         filterQuality: FilterQuality.high,
                       ),
@@ -230,14 +230,14 @@ class MobilePaymentScreenState extends State<MobilePaymentScreen> {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    onTap: (){
-                      // _launchKlashaPay( ' yowivig426@goonby.com', '1000');
-                    },
+                      onTap: () {
+                        //_launchKlashaPay( testEmail, testAmount);
+                      },
                       child: const Center(
                           child: Text(
-                    "Continue to Payment",
-                    style: TextStyle(color: Colors.white, fontSize: 14),
-                  ))),
+                        "Continue to Payment",
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                      ))),
                 ),
               ),
             )

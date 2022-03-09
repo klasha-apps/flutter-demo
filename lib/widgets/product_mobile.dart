@@ -31,7 +31,7 @@ class ProductMobile extends StatelessWidget {
               onTap: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MobilePaymentScreen()),
+                  MaterialPageRoute(builder: (context) =>  MobilePaymentScreen(productImage: products.productImage,productName: products.productName,)),
                 );
               },
               child: Image.asset(products.productImage,

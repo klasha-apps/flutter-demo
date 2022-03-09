@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:klasha/constants.dart';
 import 'package:klasha/data.dart';
 import 'package:klasha/desktop/desktop_checkout.dart';
+import 'package:klasha/tab/tab_checkout.dart';
 import 'package:klasha/widgets/produc_desktop.dart';
 import 'package:provider/provider.dart';
 
@@ -64,10 +65,7 @@ class TabScreen extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 0, left: 10),
                       child: Text("Store",
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .bodyLarge),
+                          style: Theme.of(context).textTheme.bodyLarge),
                     ),
                   ),
                 ],
@@ -86,17 +84,14 @@ class TabScreen extends StatelessWidget {
                     const SizedBox(width: 10),
                     Center(
                         child: Text("Cart",
-                            style: Theme
-                                .of(context)
-                                .textTheme
-                                .bodySmall)),
+                            style: Theme.of(context).textTheme.bodySmall)),
                     const SizedBox(width: 10),
                     Center(
                       child: Container(
                         height: 20,
                         width: 20,
                         decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: const Color(0xffDC143C),
                             borderRadius: BorderRadius.circular(32.0)),
                         child: Center(
                           child: Text("$totalCount",
@@ -120,21 +115,12 @@ class TabScreen extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 30),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DesktopCheckoutScreen()),
-                    );
-                  },
-                  child: const Text(
-                    "Nike Collection",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35),
-                  ),
+                const Text(
+                  "Nike Collection",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 35),
                 ),
                 const SizedBox(height: 30),
                 Expanded(
@@ -148,10 +134,10 @@ class TabScreen extends StatelessWidget {
                           child: GridView.builder(
                             itemCount: productList.length,
                             gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 4,
-                                mainAxisSpacing: 30,
-                                childAspectRatio: 0.65),
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 4,
+                                    mainAxisSpacing: 30,
+                                    childAspectRatio: 0.65),
                             itemBuilder: (BuildContext context, int index) {
                               return ProductTab(
                                 products: productList[index],
@@ -207,14 +193,19 @@ class TabScreen extends StatelessWidget {
                         color: Colors.transparent,
                         child: InkWell(
                             onTap: () {
-                              // _launchKlashaPay( ' yowivig426@goonby.com', '1000');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TabCheckoutScreen()),
+                              );
                             },
                             child: const Center(
                                 child: Text(
-                                  "Proceed to Checkout",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 14),
-                                ))),
+                              "Proceed to Checkout",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 14),
+                            ))),
                       ),
                     ),
                   ),
@@ -228,4 +219,3 @@ class TabScreen extends StatelessWidget {
     );
   }
 }
-

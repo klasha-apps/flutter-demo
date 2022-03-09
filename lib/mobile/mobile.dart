@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:klasha/data.dart';
+import 'package:klasha/mobile/mobile_cart.dart';
 import 'package:klasha/widgets/product_mobile.dart';
 import 'package:provider/provider.dart';
 
@@ -39,63 +40,72 @@ class MobileScreen extends StatelessWidget {
             ],
           ),
           actions: [
-            const Center(
-              child: Icon(
-                CupertinoIcons.cart,
-                size: 22,
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  const MobileCartScreen())
+                );
+              },
+              child: Row(
+                children:  [
+                  const Center(
+                    child: Icon(
+                      CupertinoIcons.cart,
+                      size: 22,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Center(
+                      child:
+                      Text("Cart", style: Theme.of(context).textTheme.bodySmall)),
+                  const SizedBox(width: 10),
+                  Center(
+                    child: Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: const Color(0xffDC143C),
+                          borderRadius: BorderRadius.circular(32.0)),
+                      child:  Center(
+                        child:  Text("$totalCount",
+                            style: const TextStyle(color:Colors.white,fontSize: 12)),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                ],
               ),
             ),
-            const SizedBox(width: 10),
-            Center(
-                child:
-                    Text("Cart", style: Theme.of(context).textTheme.bodySmall)),
-            const SizedBox(width: 10),
-            Center(
-              child: Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(32.0)),
-                child:  Center(
-                    child:  Text("$totalCount",
-                        style: const TextStyle(color:Colors.white,fontSize: 12)),
-              ),
-            ),
-            ),
-            const SizedBox(width: 10),
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            const SizedBox(height: 30),
-            const Text(
-              "Nike Collection",
-              style: TextStyle(color: Colors.black,
-              fontWeight: FontWeight.bold,fontSize: 35),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: ListView.builder(
-                  itemCount: productList.length,
-                  itemBuilder: (context, index) {
-                    return ProductMobile(
-                      products: productList[index],
-                      onTap: (){
-                        bloc.addToCart(index);
-                      },
-                    );
-                  },
-                ),
+      body: Column(
+        children: [
+          const SizedBox(height: 30),
+          const Text(
+            "Nike Collection",
+            style: TextStyle(color: Colors.black,
+                fontWeight: FontWeight.bold,fontSize: 35),
+          ),
+          const SizedBox(height: 20),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: ListView.builder(
+                itemCount: productList.length,
+                itemBuilder: (context, index) {
+                  return ProductMobile(
+                    products: productList[index],
+                    onTap: (){
+                      bloc.addToCart(index);
+                    },
+                  );
+                },
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

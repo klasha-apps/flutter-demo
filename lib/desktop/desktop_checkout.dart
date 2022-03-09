@@ -1,4 +1,4 @@
-import 'dart:js' as js;
+//import 'dart:js' as js;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:klasha/constants.dart';
@@ -6,18 +6,16 @@ import 'package:provider/provider.dart';
 
 import '../bloc/cart_block.dart';
 
-class DesktopCheckoutScreen extends StatefulWidget{
+class DesktopCheckoutScreen extends StatefulWidget {
   const DesktopCheckoutScreen({Key? key}) : super(key: key);
 
-
   @override
-  DesktopCheckoutScreenState createState()=> DesktopCheckoutScreenState();
-
+  DesktopCheckoutScreenState createState() => DesktopCheckoutScreenState();
 }
 
 class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
-
   var _yourGroupValue = 0;
+
   // late CheckoutCurrency _checkoutCurrency;
   //
   // void _launchKlashaPay( String _email, String _amount){
@@ -50,7 +48,6 @@ class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
   //   _checkoutCurrency = CheckoutCurrency.NGN;
   // }
 
-
   @override
   Widget build(BuildContext context) {
     var bloc = Provider.of<CartBloc>(context);
@@ -79,8 +76,7 @@ class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
           //     Text("Store", style: Theme.of(context).textTheme.bodyLarge),
           //   ],
           // ),
-          flexibleSpace:
-          Row(
+          flexibleSpace: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -91,15 +87,16 @@ class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
                       margin: const EdgeInsets.only(left: 0),
                       height: 40,
                       width: 40,
-                      decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(8.0)),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0)),
                       child: Image.asset("assets/images/logo.png"),
                     ),
                   ),
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 0,left: 10),
-                      child: Text("Store", style: Theme.of(context).textTheme.bodyLarge),
+                      padding: const EdgeInsets.only(top: 0, left: 10),
+                      child: Text("Store",
+                          style: Theme.of(context).textTheme.bodyLarge),
                     ),
                   ),
                 ],
@@ -117,8 +114,8 @@ class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
                     ),
                     const SizedBox(width: 10),
                     Center(
-                        child:
-                        Text("Cart", style: Theme.of(context).textTheme.bodySmall)),
+                        child: Text("Cart",
+                            style: Theme.of(context).textTheme.bodySmall)),
                     const SizedBox(width: 10),
                     Center(
                       child: Container(
@@ -127,9 +124,10 @@ class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
                         decoration: BoxDecoration(
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(32.0)),
-                        child:  Center(
-                          child:  Text("$totalCount",
-                              style: const TextStyle(color:Colors.white,fontSize: 12)),
+                        child: Center(
+                          child: Text("$totalCount",
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 12)),
                         ),
                       ),
                     ),
@@ -146,13 +144,15 @@ class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:  [
+            children: [
               const SizedBox(height: 30),
               const Center(
                 child: Text(
                   "Checkout",
-                  style: TextStyle(color: Colors.black,
-                      fontWeight: FontWeight.bold,fontSize: 35),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 35),
                 ),
               ),
               const SizedBox(height: 30),
@@ -173,38 +173,44 @@ class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
                 ),
               ),
               const Padding(
-                padding: EdgeInsets.only(left: 16.0, right: 0.0, top: 16.0),
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(text: 'Ada Adiche\n',  style: TextStyle(fontSize: 14),),
-                      TextSpan(
-                        text: 'Plot 6 & 7 Elemo Layout, Off Oda Road, Akure-Oda Road, Ondo\n+2349071603960',
-                        style: TextStyle(fontSize: 12, color: Colors.grey),
-                      ),
-                    ],
+                  padding: EdgeInsets.only(left: 16.0, right: 0.0, top: 16.0),
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Ada Adiche\n',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        TextSpan(
+                          text:
+                              'Plot 6 & 7 Elemo Layout, Off Oda Road, Akure-Oda Road, Ondo\n+2349071603960',
+                          style: TextStyle(fontSize: 12, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  )
+                  // Text(
+                  //   "Plot 6 & 7 Elemo Layout, Off Oda Road, Akure-Oda Road, Ondo +2349071603960",
+                  //   style: TextStyle(fontSize: 14, color: Colors.grey),
+                  // ),
                   ),
-                )
-                // Text(
-                //   "Plot 6 & 7 Elemo Layout, Off Oda Road, Akure-Oda Road, Ondo +2349071603960",
-                //   style: TextStyle(fontSize: 14, color: Colors.grey),
-                // ),
-              ),
               const SizedBox(height: 70),
               const Padding(
-                padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(text: '2. Delivery method\n',  style: TextStyle(fontSize: 16),),
-                      TextSpan(
-                        text: 'How do you want your order delivered?',
-                        style: TextStyle(fontSize: 12, color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                )
-              ),
+                  padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '2. Delivery method\n',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        TextSpan(
+                          text: 'How do you want your order delivered?',
+                          style: TextStyle(fontSize: 12, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  )),
               const SizedBox(height: 10),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -247,19 +253,21 @@ class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
               ),
               const SizedBox(height: 70),
               const Padding(
-                padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(text: '3. Payment method\n',  style: TextStyle(fontSize: 16),),
-                      TextSpan(
-                        text: 'How do you want your order delivered?',
-                        style: TextStyle(fontSize: 12, color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                )
-              ),
+                  padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '3. Payment method\n',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        TextSpan(
+                          text: 'How do you want your order delivered?',
+                          style: TextStyle(fontSize: 12, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  )),
               const SizedBox(height: 10),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -296,14 +304,14 @@ class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
                   child: Material(
                     color: Colors.transparent,
                     child: InkWell(
-                        onTap: (){
-                          js.context.callMethod("payWithKlasha");
+                        onTap: () {
+                          //js.context.callMethod("payWithKlasha");
                         },
                         child: const Center(
                             child: Text(
-                              "Continue to Payment",
-                              style: TextStyle(color: Colors.white, fontSize: 14),
-                            ))),
+                          "Continue to Payment",
+                          style: TextStyle(color: Colors.white, fontSize: 14),
+                        ))),
                   ),
                 ),
               )
@@ -314,5 +322,3 @@ class DesktopCheckoutScreenState extends State<DesktopCheckoutScreen> {
     );
   }
 }
-
-
