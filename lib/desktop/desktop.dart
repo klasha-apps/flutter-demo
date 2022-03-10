@@ -26,20 +26,14 @@ class DesktopScreenState extends State<DesktopScreen> {
     }
     var cart = bloc.cart;
 
-    bool _visible = true;
+    bool viewVisible = true;
 
-    void _toggle() {
-      if(_visible == true){
-        setState(() {
-          _visible = false;
-        });
-      }
-      if(_visible == false){
-        setState(() {
-          _visible = true;
-        });
-      }
-      print(_visible);
+
+    void hideWidget() {
+      setState(() {
+        viewVisible = !viewVisible;
+        print(viewVisible);
+      });
     }
 
     return Scaffold(
@@ -94,7 +88,7 @@ class DesktopScreenState extends State<DesktopScreen> {
                 padding: const EdgeInsets.only(right: 0),
                 child: GestureDetector(
                   onTap: () {
-                    _toggle();
+                    hideWidget();
                   },
                   child: Row(
                     children: [
@@ -188,67 +182,64 @@ class DesktopScreenState extends State<DesktopScreen> {
               ],
             ),
           ),
-          !_visible
-              ? Container()
-              : Positioned(
-                  left: 700,
-                  right: 570,
-                  child: Container(
-                    height: 300,
-                    width: 300,
-                    decoration:
-                        const BoxDecoration(color: Colors.white, boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 18),
-                        blurRadius: 23,
-                        spreadRadius: -13,
-                        color: shadowColor,
-                      ),
-                    ]),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: cart.length,
-                            itemBuilder: (context, index) {
-                              int? productIndex = cart.keys.toList()[index];
-                              int? count = cart[productIndex];
-                              return CartProduct(
-                                products: productList[index],
-                              );
-                            },
-                          ),
-                        ),
-                        Center(
-                          child: Container(
-                            height: 40,
-                            width: 400,
-                            color: primaryColor,
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const DesktopCheckoutScreen()),
-                                    );
-                                  },
-                                  child: const Center(
-                                      child: Text(
-                                    "Proceed to Checkout",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 14),
-                                  ))),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 15),
-                      ],
+          Positioned(
+            left: 700,
+            right: 570,
+            child: Container(
+              height: 300,
+              width: 300,
+              decoration: const BoxDecoration(color: Colors.white, boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 18),
+                  blurRadius: 23,
+                  spreadRadius: -13,
+                  color: shadowColor,
+                ),
+              ]),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: cart.length,
+                      itemBuilder: (context, index) {
+                        int? productIndex = cart.keys.toList()[index];
+                        int? count = cart[productIndex];
+                        return CartProduct(
+                          products: productList[index],
+                        );
+                      },
                     ),
                   ),
-                )
+                  Center(
+                    child: Container(
+                      height: 40,
+                      width: 400,
+                      color: primaryColor,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                    const DesktopCheckoutScreen()),
+                              );
+                            },
+                            child: const Center(
+                                child: Text(
+                                  "Proceed to Checkout",
+                                  style:
+                                  TextStyle(color: Colors.white, fontSize: 14),
+                                ))),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

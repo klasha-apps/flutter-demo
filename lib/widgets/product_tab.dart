@@ -45,53 +45,55 @@ class ProductTab extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall,
           ),
           const SizedBox(height: 10.0),
-          Row(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GiveStarReviews(
-                starData: [
-                  GiveStarData(
-                      text: '4.05  ',
-                      size: 10,
-                      starCount: 5,
-                      onChanged: (rate) {}),
-                ],
-              ),
-              const SizedBox(width: 30),
-              Expanded(
-                child: Container(
-                  width: 100,
-                  height: 50,
-                  color: primaryColor,
-                  child: Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      onTap: onTap,
-                      child: Center(
-                          child: RichText(
-                            text: const TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  alignment: PlaceholderAlignment.middle,
-                                  child: Icon(
-                                    CupertinoIcons.cart,
-                                    size: 15,
-                                    color: Colors.white,
+          Expanded(
+            child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GiveStarReviews(
+                  starData: [
+                    GiveStarData(
+                        text: '4.05  ',
+                        size: 10,
+                        starCount: 5,
+                        onChanged: (rate) {}),
+                  ],
+                ),
+                const SizedBox(width: 30),
+                Expanded(
+                  child: Container(
+                    width: 100,
+                    height: 50,
+                    color: primaryColor,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: onTap,
+                        child: Center(
+                            child: RichText(
+                              text: const TextSpan(
+                                children: [
+                                  WidgetSpan(
+                                    alignment: PlaceholderAlignment.middle,
+                                    child: Icon(
+                                      CupertinoIcons.cart,
+                                      size: 15,
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                ),
-                                TextSpan(
-                                  text: " Add to Cart",
-                                  style: TextStyle(color: Colors.white, fontSize: 12),
-                                ),
-                              ],
-                            ),
-                          )),
+                                  TextSpan(
+                                    text: " Add to Cart",
+                                    style: TextStyle(color: Colors.white, fontSize: 12),
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
