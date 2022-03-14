@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:givestarreviews/givestarreviews.dart';
+import 'package:klasha_flutter_checkout/klasha_flutter_checkout.dart';
 
 import '../constants.dart';
 
@@ -19,36 +20,36 @@ class MobilePaymentScreen extends StatefulWidget {
 class MobilePaymentScreenState extends State<MobilePaymentScreen> {
   var _yourGroupValue = 0;
 
-  // late CheckoutCurrency _checkoutCurrency;
-  //
-  // void _launchKlashaPay( String _email, String _amount){
-  //   KlashaCheckout.checkout(
-  //     context,
-  //     email: _email,
-  //     amount: double.parse(_amount),
-  //     merchantKey: merchantKey,
-  //     checkoutCurrency: _checkoutCurrency,
-  //     onComplete: (KlashaCheckoutResponse klashaCheckoutResponse) {
-  //       print(
-  //           'checkout response transaction reference is  ${klashaCheckoutResponse.transactionReference}');
-  //       print('checkout response status is ${klashaCheckoutResponse.status}');
-  //       print(
-  //           'checkout response message is ${klashaCheckoutResponse.message}');
-  //       if (klashaCheckoutResponse.status) {
-  //         // show success dialog -> transaction  successful
-  //
-  //       } else {
-  //         // show error dialog -> transaction not successful
-  //       }
-  //     },
-  //   );
-  // }
+  late CheckoutCurrency _checkoutCurrency;
+
+  void _launchKlashaPay( String _email, String _amount){
+    KlashaCheckout.checkout(
+      context,
+      email: _email,
+      amount: double.parse(_amount),
+      merchantKey: merchantKey,
+      checkoutCurrency: _checkoutCurrency,
+      onComplete: (KlashaCheckoutResponse klashaCheckoutResponse) {
+        print(
+            'checkout response transaction reference is  ${klashaCheckoutResponse.transactionReference}');
+        print('checkout response status is ${klashaCheckoutResponse.status}');
+        print(
+            'checkout response message is ${klashaCheckoutResponse.message}');
+        if (klashaCheckoutResponse.status) {
+          // show success dialog -> transaction  successful
+
+        } else {
+          // show error dialog -> transaction not successful
+        }
+      },
+    );
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    //_checkoutCurrency = CheckoutCurrency.NGN;
+    _checkoutCurrency = CheckoutCurrency.NGN;
   }
 
   @override
@@ -231,7 +232,8 @@ class MobilePaymentScreenState extends State<MobilePaymentScreen> {
                   color: Colors.transparent,
                   child: InkWell(
                       onTap: () {
-                        //_launchKlashaPay( testEmail, testAmount);
+                        _launchKlashaPay( testEmail, testAmount);
+
                       },
                       child: const Center(
                           child: Text(

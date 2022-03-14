@@ -16,11 +16,7 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: ResponsiveLayout(
-        mobileBody: MobileScreen(),
-        desktopBody: DesktopScreen(),
-        tabBody: TabScreen(),
-      ),
+      body: MobileScreen()
     );
   }
 }

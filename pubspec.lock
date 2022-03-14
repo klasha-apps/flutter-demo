@@ -81,6 +81,34 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.4"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.0"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
+  klasha_flutter_checkout:
+    dependency: "direct main"
+    description:
+      name: klasha_flutter_checkout
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   lints:
     dependency: transitive
     description:
@@ -193,4 +221,4 @@ packages:
     version: "2.1.1"
 sdks:
   dart: ">=2.16.1 <3.0.0"
-  flutter: ">=1.16.0"
+  flutter: ">=1.17.0"

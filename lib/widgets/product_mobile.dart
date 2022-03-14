@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:givestarreviews/givestarreviews.dart';
 import 'package:klasha/data.dart';
+import 'package:klasha/widgets/ratingBar.dart';
 
 import '../constants.dart';
 import '../mobile/mobile_payment_screen.dart';
@@ -58,15 +59,29 @@ class ProductMobile extends StatelessWidget {
               // crossAxisAlignment: CrossAxisAlignment.start,
               //mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GiveStarReviews(
-                  starData: [
-                    GiveStarData(
-                        text: '4.05  ',
-                        size: 20,
+                // GiveStarReviews(
+                //   starData: [
+                //     GiveStarData(
+                //         text: '4.05  ',
+                //         size: 20,
+                //         starCount: 5,
+                //         onChanged: (rate) {}),
+                //   ],
+                // ),
+                Expanded(
+                  child: Row(
+                    children:  [
+                      RatingBar(
                         starCount: 5,
-                        onChanged: (rate) {}),
-                  ],
+                        rating: 4.5,
+                        color: Colors.amber,
+                      ),
+                      const SizedBox(width: 4.0),
+                      const Text("4.5", style: TextStyle(fontSize: 14),),
+                    ],
+                  ),
                 ),
+
                 const SizedBox(width: 30),
                 Expanded(
                   flex: 1,

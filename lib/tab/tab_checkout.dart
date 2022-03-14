@@ -1,4 +1,4 @@
-import 'dart:js' as js;
+// import 'dart:js' as js;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:klasha/constants.dart';
@@ -305,7 +305,7 @@ class TabCheckoutScreenState extends State<TabCheckoutScreen> {
                     color: Colors.transparent,
                     child: InkWell(
                         onTap: () {
-                          js.context.callMethod("payWithKlasha");
+                          //js.context.callMethod("payWithKlasha");
                         },
                         child: const Center(
                             child: Text(
